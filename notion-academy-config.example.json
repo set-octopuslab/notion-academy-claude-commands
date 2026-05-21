@@ -1,5 +1,5 @@
 {
-  "_comment": "학원 운영 자동화 공용 설정 템플릿. 이 파일을 복사해서 G:/내 드라이브/ClaudeSetting/notion-academy-config.json (또는 ~/.claude/notion-academy-config.json) 로 저장한 뒤 placeholder를 채우세요. 또는 /노션-템플릿연결 명령어로 16개 DB id를 자동 채울 수 있습니다.",
+  "_comment": "학원 운영 자동화 공용 설정 템플릿. 이 파일을 복사해서 ~/.claude/notion-academy-config.json (기본 위치) 로 저장한 뒤 placeholder를 채우세요. 여러 PC와 한 학원을 공유하는 환경(예: G드라이브 마운트)이라면 G:/내 드라이브/ClaudeSetting/notion-academy-config.json 같은 공유 위치도 OK. 또는 /노션-템플릿연결 명령어로 16개 DB id를 자동 채울 수 있습니다.",
   "_version": 5,
   "_workspace_root": "<your-workspace-root-page-id-32hex>",
 
