@@ -708,6 +708,27 @@
 
 <p>이제 Claude가 이 페이지와 그 아래의 모든 DB(학생·반·시간표 등)에 접근할 수 있게 됐습니다.</p>
 
+<h3>2-4. Claude Code에 노션 MCP 활성화 + 연동키 등록 (가장 중요)</h3>
+<p>Claude Code가 본인의 노션에 직접 접근하려면 <b>노션 MCP</b>(연결 도구)를 활성화하고, 2-2에서 만든 연동키를 등록해야 합니다. 이 단계를 건너뛰면 다음 섹션의 셋업이 중간에 멈춥니다.</p>
+<ol>
+  <li>Claude Code를 켭니다.</li>
+  <li>설정 메뉴 열기 — Mac은 <code>Cmd + ,</code>, Windows는 <code>Ctrl + ,</code></li>
+  <li>"MCP" 또는 "확장 도구" 섹션 찾기</li>
+  <li>"notionApi" 또는 "Notion" 항목을 <b>활성화</b></li>
+  <li>"Internal Integration Secret" 입력란에 2-2에서 복사해둔 연동키(<code>ntn_...</code>)를 붙여넣기</li>
+  <li>설정 저장 → <b>Claude Code 재시작</b></li>
+  <li>재시작 후 새 세션에서 <code>/mcp</code> 명령어 입력 → "notionApi" 가 목록에 보이면 활성화 성공</li>
+</ol>
+
+<div class="warn-box">
+  <b>⚠️ 메뉴가 안 보이거나 다른 형태일 때</b> &mdash; Claude Code 버전·환경마다 메뉴 구조가 다를 수 있습니다. 막히시면 Claude Code 창에 자연어로 물어보세요:
+  <pre>노션 MCP 활성화하는 방법 알려줘.
+내 OS는 [Windows / Mac] 이고, Claude Code 메뉴에 MCP 항목이 안 보여.</pre>
+  Claude가 본인 환경에 맞는 방법을 안내해줍니다. PowerShell·파일 편집 안내가 나오면 그대로 따라하지 마시고, "GUI 메뉴로 하는 방법 알려줘"라고 다시 부탁하세요.
+</div>
+
+<p>이 단계까지 완료되면 본격 셋업 준비 끝입니다. 다음 섹션으로 가시면 됩니다.</p>
+
 <!-- ====================== 3. Claude에게 셋업 부탁하기 (핵심) ====================== -->
 <h2 id="section-3">3. Claude에게 셋업 부탁하기 &nbsp;⭐ 핵심 ⭐</h2>
 
