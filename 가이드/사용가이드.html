@@ -513,6 +513,89 @@
 </style>
 </head>
 <body>
+
+<!-- ====================== 모바일 사이드바 토글 ====================== -->
+<button class="sb-toggle" type="button" aria-label="목차 열기" onclick="document.querySelector('.sidebar').classList.toggle('open');">
+  <span></span><span></span><span></span>
+</button>
+
+<!-- ====================== 좌측 sticky 사이드바 ====================== -->
+<nav class="sidebar" aria-label="목차">
+  <div class="sb-title">목차</div>
+  <div class="sb-sub">학원관리 노션 명령어 사용가이드</div>
+  <ul>
+    <li><a class="sb-top" href="#section-0">0. 시작하기 전에</a></li>
+    <li><a class="sb-top" href="#section-1">1. Claude Code 설치</a></li>
+    <li><a class="sb-top" href="#section-2">2. 노션 템플릿 받기</a></li>
+    <li><a class="sb-top" href="#section-3">3. Claude에게 셋업 부탁하기 ⭐</a></li>
+    <li><a class="sb-top" href="#section-4">4. 첫 명령어 사용해보기</a></li>
+    <li>
+      <a class="sb-top" href="#section-5">5. 명령어 22개 자세히</a>
+
+      <div class="sb-cat">학생 관리 <span class="sb-count">(3)</span></div>
+      <ul class="sb-cmds">
+        <li><a href="#cmd-student-register">/학생-신규등록</a></li>
+        <li><a href="#cmd-student-pause">/학생-휴원처리</a></li>
+        <li><a href="#cmd-student-withdraw">/학생-퇴원처리</a></li>
+      </ul>
+
+      <div class="sb-cat">반 · 수강 <span class="sb-count">(2)</span></div>
+      <ul class="sb-cmds">
+        <li><a href="#cmd-class-create">/클래스등록</a></li>
+        <li><a href="#cmd-enrollment">/수강등록</a></li>
+      </ul>
+
+      <div class="sb-cat">시간표 <span class="sb-count">(4)</span></div>
+      <ul class="sb-cmds">
+        <li><a href="#cmd-schedule">/시간표등록</a></li>
+        <li><a href="#cmd-schedule-change">/시간표변경</a></li>
+        <li><a href="#cmd-makeup">/보강시간표등록</a></li>
+        <li><a href="#cmd-closure">/휴강등록</a></li>
+      </ul>
+
+      <div class="sb-cat">출결 <span class="sb-count">(2)</span></div>
+      <ul class="sb-cmds">
+        <li><a href="#cmd-attendance">/출석</a></li>
+        <li><a href="#cmd-absence">/결석</a></li>
+      </ul>
+
+      <div class="sb-cat">수업 기록 <span class="sb-count">(5)</span></div>
+      <ul class="sb-cmds">
+        <li><a href="#cmd-lesson-plan">/수업계획</a></li>
+        <li><a href="#cmd-lesson-result">/수업결과</a></li>
+        <li><a href="#cmd-daily-send">/일일피드백발송</a></li>
+        <li><a href="#cmd-weekly">/주간피드백</a></li>
+        <li><a href="#cmd-monthly">/월간피드백</a></li>
+      </ul>
+
+      <div class="sb-cat">상담 <span class="sb-count">(2)</span></div>
+      <ul class="sb-cmds">
+        <li><a href="#cmd-consult-book">/상담예약</a></li>
+        <li><a href="#cmd-consult-record">/상담기록</a></li>
+      </ul>
+
+      <div class="sb-cat">수강료 · 공지 <span class="sb-count">(2)</span></div>
+      <ul class="sb-cmds">
+        <li><a href="#cmd-payment">/결제선생</a></li>
+        <li><a href="#cmd-board">/노션-게시판</a></li>
+      </ul>
+
+      <div class="sb-cat">운영 <span class="sb-count">(1)</span></div>
+      <ul class="sb-cmds">
+        <li><a href="#cmd-supply">/물품구매</a></li>
+      </ul>
+
+      <div class="sb-cat">초기 세팅 <span class="sb-count">(2)</span></div>
+      <ul class="sb-cmds">
+        <li><a href="#cmd-template-connect">/노션-템플릿연결</a></li>
+        <li><a href="#cmd-init">/노션-초기설정</a></li>
+      </ul>
+    </li>
+    <li><a class="sb-top" href="#section-6">6. 자주 묻는 질문 (FAQ)</a></li>
+    <li><a class="sb-top" href="#section-7">7. 도움 요청</a></li>
+  </ul>
+</nav>
+
 <div class="container">
 
 <!-- ====================== 표지 ====================== -->
@@ -1686,5 +1769,84 @@ Claude: ✅ row 생성. 영수증은 노션에서 직접 첨부하세요</div>
 </p>
 
 </div>
+
+<script>
+(function () {
+  // 사이드바 active highlight + 모바일 클릭 시 닫기
+  var sidebar = document.querySelector('.sidebar');
+  if (!sidebar) return;
+
+  var links = sidebar.querySelectorAll('a[href^="#"]');
+  var linkMap = {};
+  var targets = [];
+
+  links.forEach(function (a) {
+    var id = a.getAttribute('href').slice(1);
+    if (!id) return;
+    var el = document.getElementById(id);
+    if (!el) return;
+    linkMap[id] = a;
+    targets.push(el);
+  });
+
+  // 모바일에서 링크 클릭 시 사이드바 닫기
+  links.forEach(function (a) {
+    a.addEventListener('click', function () {
+      if (window.innerWidth <= 800) {
+        sidebar.classList.remove('open');
+      }
+    });
+  });
+
+  if (!('IntersectionObserver' in window) || targets.length === 0) return;
+
+  var currentId = null;
+  function setActive(id) {
+    if (id === currentId) return;
+    currentId = id;
+    Object.keys(linkMap).forEach(function (k) {
+      linkMap[k].classList.toggle('active', k === id);
+    });
+    // 사이드바 스크롤이 active 항목을 따라가게
+    if (id && linkMap[id]) {
+      var a = linkMap[id];
+      var sbRect = sidebar.getBoundingClientRect();
+      var aRect = a.getBoundingClientRect();
+      if (aRect.top < sbRect.top + 40 || aRect.bottom > sbRect.bottom - 40) {
+        a.scrollIntoView({ block: 'nearest' });
+      }
+    }
+  }
+
+  var visible = {};
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        visible[e.target.id] = e.intersectionRatio;
+      } else {
+        delete visible[e.target.id];
+      }
+    });
+
+    // 화면에 보이는 것 중 가장 위쪽의 것을 active 로 (= DOM 순서상 가장 먼저 나오는 것)
+    var visibleIds = Object.keys(visible);
+    if (visibleIds.length > 0) {
+      // targets는 DOM 순서대로 들어있음
+      for (var i = 0; i < targets.length; i++) {
+        if (visible[targets[i].id] !== undefined) {
+          setActive(targets[i].id);
+          break;
+        }
+      }
+    }
+  }, {
+    rootMargin: '-80px 0px -60% 0px',
+    threshold: [0, 0.1, 0.5, 1]
+  });
+
+  targets.forEach(function (el) { observer.observe(el); });
+})();
+</script>
+
 </body>
 </html>
