@@ -31,7 +31,7 @@ Repo: https://github.com/set-octopuslab/notion-academy-claude-commands
 
 ---
 
-## 등록된 명령어 (22개)
+## 등록된 명령어 (23개)
 
 | 카테고리 | 명령어 |
 |---|---|
@@ -59,6 +59,6 @@ Repo: https://github.com/set-octopuslab/notion-academy-claude-commands
 
 ## 막히는 부분이 있을 때
 
-가이드대로 진행하시다 막히거나 명령어가 의도대로 동작하지 않으면, Claude Code 창에 자연어로 물어보세요. 이 가이드와 22개 명령어를 모두 알고 있어서 함께 진단·수정해드립니다.
+가이드대로 진행하시다 막히거나 명령어가 의도대로 동작하지 않으면, Claude Code 창에 자연어로 물어보세요. 이 가이드와 23개 명령어를 모두 알고 있어서 함께 진단·수정해드립니다.
 
 자세한 문제 해결 방법은 `가이드/사용가이드.html` 의 **7. 도움 요청** 섹션 참고.
