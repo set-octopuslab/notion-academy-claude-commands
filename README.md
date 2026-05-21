@@ -28,6 +28,8 @@ Repo: https://github.com/set-octopuslab/notion-academy-claude-commands
 1. Claude Code 설치 — https://claude.ai/code
 2. 옥토퍼스코딩 학원관리 노션 템플릿을 본인 워크스페이스에 복제
 3. 노션 Integration Secret 발급 — https://notion.so/profile/integrations
+4. 복제한 부모 페이지에 위 Integration "연결" (페이지 우상단 ··· → 연결 → 선택)
+5. **Claude Code의 노션 MCP 활성화 + 위 Integration Secret 등록 (한 번만)** — 가이드 2-4 단계 참고. 이 단계를 건너뛰면 셋업이 중간에 멈춥니다.
 
 ---
 
