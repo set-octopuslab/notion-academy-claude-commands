@@ -1,0 +1,27 @@
+# 노션명령어 폴더 .gitignore
+# 이 폴더는 슬래시 커맨드 .md 들과 README, 예시 config 만 추적합니다.
+# 학원 고유 값(notion-academy-config.json)은 G드라이브 또는 ~/.claude/ 에 별도 저장됩니다.
+
+# 학원 고유 config (안전망 — 이 폴더 안에 들어와도 절대 commit 되지 않게)
+notion-academy-config.json
+**/notion-academy-config.json
+*.local.json
+
+# 검증·임시 산출물
+_audit/output_*
+_audit/*.local.md
+temp/
+tmp/
+*.tmp
+*.bak
+*.bak.*
+
+# OS·에디터 잡파일
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+
+# 로그
+*.log

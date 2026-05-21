@@ -1,0 +1,75 @@
+{
+  "_comment": "학원 운영 자동화 공용 설정 템플릿. 이 파일을 복사해서 G:/내 드라이브/ClaudeSetting/notion-academy-config.json (또는 ~/.claude/notion-academy-config.json) 로 저장한 뒤 placeholder를 채우세요. 또는 /노션-템플릿연결 명령어로 16개 DB id를 자동 채울 수 있습니다.",
+  "_version": 5,
+  "_workspace_root": "<your-workspace-root-page-id-32hex>",
+
+  "academy": {
+    "name": "<학원명>",
+    "_comment": "메시지·게시판·미리보기에 학원명을 노출해야 할 때 참조"
+  },
+
+  "discord": {
+    "parent_webhook": "<your-discord-webhook-url>",
+    "_parent_webhook_purpose": "결제선생/일일피드백 등 학부모 안내 메시지 발송 채널",
+    "session_save_webhook": "<your-discord-webhook-url>",
+    "_session_save_webhook_purpose": "Claude 세션 저장 알림 (학부모 메시지 보내지 말 것)",
+    "username": "결제선생"
+  },
+
+  "notion": {
+    "api_token": "",
+    "_api_token_comment": "노션 통합(Integration)에서 발급한 internal integration secret. ntn_ 으로 시작. 사진 자동 첨부(file_upload) 등 일부 기능에 필요. MCP만 쓰면 비워둬도 OK.",
+    "boards_database_id": "<your-data-source-id>",
+    "_boards_database_id_comment": "게시판 DB의 database_id (data_source_id와 별개). retrieve 호출 일부에서만 사용. data_source_id로 충분한 경우 빈 값 가능",
+    "data_sources": {
+      "students": "<your-data-source-id>",
+      "parents": "<your-data-source-id>",
+      "monthly_tuition": "<your-data-source-id>",
+      "tuition_lines": "<your-data-source-id>",
+      "regular_schedule": "<your-data-source-id>",
+      "makeup_schedule": "<your-data-source-id>",
+      "classes": "<your-data-source-id>",
+      "lesson_results": "<your-data-source-id>",
+      "lesson_plans": "<your-data-source-id>",
+      "academy_calendar": "<your-data-source-id>",
+      "refunds": "<your-data-source-id>",
+      "consultations": "<your-data-source-id>",
+      "consultations_booking": "<your-data-source-id>",
+      "class_enrollments": "<your-data-source-id>",
+      "teachers": "<your-data-source-id>",
+      "supplies": "<your-data-source-id>",
+      "weekly_monthly_feedback": "<your-data-source-id>",
+      "boards": "<your-data-source-id>"
+    }
+  },
+
+  "tuition": {
+    "_comment": "수강료 패턴: [초,중,고] + 정규수업 시간표 수 → 패턴 결정. 학원 정책에 맞게 수정하세요. 미사용 패턴은 그대로 둬도 됨.",
+    "patterns": {
+      "초주1": { "월수강료": 200000, "월기준": 4, "회당단가": 50000, "할인버퍼": 0 },
+      "초주2": { "월수강료": 350000, "월기준": 8, "회당단가": 50000, "할인버퍼": 1 },
+      "중고주1": { "월수강료": 250000, "월기준": 4, "회당단가": 62500, "할인버퍼": 0 },
+      "중고주2": { "월수강료": 400000, "월기준": 8, "회당단가": 50000, "할인버퍼": 0 }
+    },
+    "_매월_결제기준일": 1,
+    "_매월_결제기준일_comment": "매월 며칠을 결제 안내일로 표시할지. 학원마다 다름 (예: 1일, 25일 등)",
+    "_천원_절삭": true,
+    "_천원_절삭_comment": "안내 메시지에서 천원 미만을 절삭할지 (노션 저장값은 정확값 유지)"
+  },
+
+  "month_closing": {
+    "_comment": "결제선생 메시지 끝에 붙는 월별 인사말. 학원 톤에 맞게 수정하세요.",
+    "1": "새해가 밝았네요. 올 한 해도 아이가 즐겁게 배우며 한 걸음씩 자라도록 곁에서 함께하겠습니다.",
+    "2": "한 학년을 마무리하는 시간이네요. 새 학년도 잘 준비할 수 있도록 저희도 꼼꼼히 챙기겠습니다.",
+    "3": "새 학기가 시작되었네요. 새로운 마음으로 즐겁게 배워나갈 수 있도록 함께하겠습니다.",
+    "4": "봄기운이 완연한 요즘이네요. 이번달도 즐겁게 배우며 쑥쑥 성장해 나갈 수 있도록 함께하겠습니다.",
+    "5": "가정의 달 5월, 늘 가정의 행복이 가득하시길 바랍니다. 이번달도 즐겁게 배우며 성장해 나갈 수 있도록 함께하겠습니다.",
+    "6": "어느새 학기 중반이네요. 이번달도 꾸준히 즐겁게 배우며 차근차근 다져나갈 수 있도록 함께하겠습니다.",
+    "7": "한 학기 동안 정말 수고 많으셨습니다. 이번달도 알차게 마무리할 수 있도록 함께하겠습니다.",
+    "8": "무더위가 계속되는 요즘이네요. 이번달도 시원한 교실에서 즐겁게 배울 수 있도록 준비하겠습니다.",
+    "9": "어느덧 2학기가 시작되었네요. 새로운 마음으로 즐겁게 배워나갈 수 있도록 함께하겠습니다.",
+    "10": "선선한 가을이 찾아왔네요. 이번달도 차분히 즐겁게 배우며 실력을 다져갈 수 있도록 함께하겠습니다.",
+    "11": "어느덧 올해도 얼마 남지 않았네요. 이번달도 알차게 배우며 성장할 수 있도록 함께하겠습니다.",
+    "12": "올 한 해 많은 사랑과 믿음 감사드립니다. 이번달도 따뜻하게 한 해를 마무리할 수 있도록 함께하겠습니다."
+  }
+}
